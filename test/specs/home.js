@@ -11,4 +11,14 @@ describe("Home", () => {
       "Practice E-Commerce Site – Automation Bro"
     );
   });
+
+  it("Open About Page & assert URL", async () => {
+    // Open URL
+    await browser.url("https://practice.automationbro.com/about");
+
+    // Assert title
+    await expect(browser).toHaveUrl(
+      "https://practice.automationbro.com/about/"
+    );
+  });
 });
