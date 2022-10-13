@@ -21,4 +21,15 @@ describe("Home", () => {
       "https://practice.automationbro.com/about/"
     );
   });
+
+  it("Click Get Started btn on Home page & assert url contains 'get-started' text", async () => {
+    // Open URL
+    await browser.url("https://practice.automationbro.com");
+
+    // Click Get Started btn
+    await $("#get-started").click();
+
+    // Assert title
+    await expect(browser).toHaveUrlContaining("get-started");
+  });
 });
