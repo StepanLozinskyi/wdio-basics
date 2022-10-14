@@ -1,4 +1,4 @@
-describe("Contact", () => {
+gdescribe("Contact", () => {
   it("Fill all the input fields, submit form and assert success message", async () => {
     await browser.url("/contact");
 

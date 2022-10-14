@@ -14,6 +14,17 @@ describe("Navigation Menu", () => {
 
     const actualLinks = [];
 
+    await browser.waitUntil(
+      async function () {
+        const homeText = await $("#primary-menu li").getText(); // Home
+        return homeText === "Home"; // true | false
+      },
+      {
+        timeout: 5000,
+        timeoutMsg: "Could not verify the Home text from #primary-menu li",
+      }
+    );
+
     // Solution1: if we know that #primary-menu selector return 1 elem
     //const navLinks = await $("#primary-menu").$$("li[id*=menu]");
 
