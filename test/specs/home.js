@@ -1,5 +1,6 @@
 import HomePage from "../pages/home-page";
 import AboutPage from "../pages/about-page";
+import allureReporter from "@wdio/allure-reporter";
 
 describe("Home", () => {
   // before(async () => {
@@ -23,6 +24,8 @@ describe("Home", () => {
 
   it("Open URL & assert title", async () => {
     // Open URL
+    allureReporter.addFeature("Home Feature");
+    allureReporter.addSeverity("minor");
     await HomePage.open();
 
     // Assert title
@@ -56,6 +59,7 @@ describe("Home", () => {
   // Get element by xPath -> //img[@alt='Practice E-Commerce Site
   it("Click Logo img on Home page & assert url does not contain 'get-started' text using xPath", async () => {
     // Open URL
+    allureReporter.addFeature("Logo Verification");
     await HomePage.open();
 
     // Click Logo

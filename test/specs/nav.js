@@ -1,10 +1,12 @@
 import HomePage from "../pages/home-page";
+import allureReporter from "@wdio/allure-reporter";
 
 describe("Navigation Menu", () => {
   it("Get the text of all menu items & assert them", async () => {
     // Open URL using baseURL from wdio.config.js
+    allureReporter.addFeature("Navigation Feature");
+    allureReporter.addSeverity("critical");
     await HomePage.open();
-
     const expectedLinks = [
       "Home",
       "About",

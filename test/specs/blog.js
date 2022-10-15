@@ -1,7 +1,7 @@
 import BlogPage from "../pages/blog-page";
 
 describe("Blog", () => {
-  it("Get the list of all Recent Posts & assert the length of each list item > 1 & assert the total count = 4", async () => {
+  it("Get the list of all Recent Posts & assert the length of each list item > 1 & assert the total count = 5", async () => {
     await BlogPage.open();
 
     // Get the Recent Post List Elements
