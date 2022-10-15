@@ -1,24 +1,24 @@
+import CartPage from "../pages/cart-page";
 const path = require("path");
 
 describe("Upload", () => {
   it("Upload file and assert success message", async () => {
-    await browser.url("/cart");
+    await CartPage.open();
 
-    await browser.execute(
-      "document.querySelector('#upfile_1').removeAttribute('class')"
-    );
+    await browser.execute(CartPage.removeHiddenAttribuleClassFileBtn);
 
-    const inputFile = await $("#upfile_1");
-    const uploadBtn = await $("#upload_1");
+    const inputFile = await CartPage.fileInputBtn;
+    const uploadBtn = await CartPage.fileUploadBtn;
 
     const remoteFilePath = await browser.uploadFile("logo.png");
     await inputFile.setValue(remoteFilePath);
     await uploadBtn.click();
 
-    const successMessage = await $("#wfu_messageblock_header_1_label_1");
+    const successMessage = await CartPage.messageBlock;
     await expect(successMessage).toHaveTextContaining("uploaded successfully");
   });
 
+  // Practise testing upload from another site https://the-internet.herokuapp.com/upload
   it.only("Simple upload test", async () => {
     // Open url
     await browser.url("https://the-internet.herokuapp.com/upload");
@@ -40,7 +40,7 @@ describe("Upload", () => {
 
   it.only("Upload on a hidden input field", async () => {
     // Open url
-    await browser.url("/cart/");
+    await CartPage.open();
 
     // store test file path
     const filePath = path.join(__dirname, "../data/logotitle.png");
@@ -49,14 +49,14 @@ describe("Upload", () => {
     const remoteFilePath = await browser.uploadFile(filePath);
 
     // remove hidden class
-    await browser.execute("document.querySelector('#upfile_1').className = ''");
+    await browser.execute(CartPage.clearHiddenAttribuleClassFileBtn);
 
     // set file path value in the input field
-    await $("#upfile_1").setValue(remoteFilePath);
-    await $("#upload_1").click(); // click the upload button
+    await CartPage.fileInputBtn.setValue(remoteFilePath);
+    await CartPage.fileUploadBtn.click(); // click the upload button
 
     // assertion
-    await expect($("#wfu_messageblock_header_1_label_1")).toHaveTextContaining(
+    await expect(CartPage.messageBlock).toHaveTextContaining(
       "uploaded successfully"
     );
   });

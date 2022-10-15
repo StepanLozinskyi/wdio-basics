@@ -25,7 +25,6 @@ exports.config = {
   exclude: [
     // 'path/to/excluded/files'
   ],
-  //
   // ============
   // Capabilities
   // ============

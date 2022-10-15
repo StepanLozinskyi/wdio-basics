@@ -1,19 +1,21 @@
+import IframePage from "../pages/iframe-page";
+
 describe("iFrame", () => {
   it("Working with iFrame", async () => {
     // open url
-    await browser.url("/iframe-sample/");
+    await IframePage.open();
 
     // access the iFrame
-    const iFrame = await $("#advanced_iframe");
+    const iFrame = await IframePage.iFrame;
     await browser.switchToFrame(iFrame);
 
     // verify logo exists
-    await expect($("#site-logo")).toExist();
+    await expect(IframePage.iFrameLogo).toExist();
 
     // switch to parent frame
     await browser.switchToParentFrame();
 
     // verify page title
-    await expect($("h1.tg-page-header__title")).toHaveText("IFrame Sample");
+    await expect(IframePage.iFramePageTitle).toHaveText("IFrame Sample");
   });
 });

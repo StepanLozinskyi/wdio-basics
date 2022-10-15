@@ -2,6 +2,25 @@ import HomePage from "../pages/home-page";
 import AboutPage from "../pages/about-page";
 
 describe("Home", () => {
+  // before(async () => {
+  //   console.log('THIS COULD BE USED FOR TEST SETUP');
+  // })
+
+  beforeEach(async () => {
+    console.log("THIS RUNS BEFORE EACH TEST");
+
+    // Open URL
+    await HomePage.open();
+  });
+
+  // after(async () => {
+  //   console.log('THIS COULD BE USED FOR TEST CLEANUP');
+  // })
+
+  // afterEach(async () => {
+  //   console.log('THIS RUNS AFTER EACH TEST');
+  // })
+
   it("Open URL & assert title", async () => {
     // Open URL
     await HomePage.open();
