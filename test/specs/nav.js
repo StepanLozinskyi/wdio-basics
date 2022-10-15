@@ -1,7 +1,9 @@
+import HomePage from "../pages/home-page";
+
 describe("Navigation Menu", () => {
   it("Get the text of all menu items & assert them", async () => {
     // Open URL using baseURL from wdio.config.js
-    await browser.url("/");
+    await HomePage.open();
 
     const expectedLinks = [
       "Home",
@@ -16,7 +18,9 @@ describe("Navigation Menu", () => {
 
     await browser.waitUntil(
       async function () {
-        const homeText = await $("#primary-menu li").getText(); // Home
+        //const homeText = await $("#primary-menu li").getText(); // Home
+        // Using PMO (Page Object Model) -> Component Concept
+        const homeText = await HomePage.NavComponent.firstNavMenuList.getText(); // Home
         return homeText === "Home"; // true | false
       },
       {
@@ -29,7 +33,9 @@ describe("Navigation Menu", () => {
     //const navLinks = await $("#primary-menu").$$("li[id*=menu]");
 
     // Solution2: if we dont know about #primary-menu selector but our elems inside such elem we can directly write
-    const navLinks = await $$("#primary-menu li[id*=menu]");
+    //const navLinks = await $$("#primary-menu li[id*=menu]");
+    // Using PMO (Page Object Model) -> Component Concept
+    const navLinks = await HomePage.NavComponent.linksNavMenu;
 
     for (const link of navLinks) {
       actualLinks.push(await link.getText());

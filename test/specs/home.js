@@ -1,10 +1,10 @@
-// Practice E-Commerce Site – Automation Bro
-// https://practice.automationbro.com/
+import HomePage from "../pages/home-page";
+import AboutPage from "../pages/about-page";
 
 describe("Home", () => {
   it("Open URL & assert title", async () => {
     // Open URL
-    await browser.url("https://practice.automationbro.com/");
+    await HomePage.open();
 
     // Assert title
     await expect(browser).toHaveTitle(
@@ -14,7 +14,7 @@ describe("Home", () => {
 
   it("Open About Page & assert URL", async () => {
     // Open URL
-    await browser.url("https://practice.automationbro.com/about");
+    await AboutPage.open();
 
     // Assert title
     await expect(browser).toHaveUrl(
@@ -25,10 +25,10 @@ describe("Home", () => {
   // Get element by unique href value -> $("#get-started")
   it("Click Get Started btn on Home page & assert url contains 'get-started' text", async () => {
     // Open URL
-    await browser.url("https://practice.automationbro.com");
+    await HomePage.open();
 
     // Click Get Started btn
-    await $("#get-started").click();
+    await HomePage.btnGetStarted.click();
 
     // Assert title
     await expect(browser).toHaveUrlContaining("get-started");
@@ -37,10 +37,10 @@ describe("Home", () => {
   // Get element by xPath -> //img[@alt='Practice E-Commerce Site
   it("Click Logo img on Home page & assert url does not contain 'get-started' text using xPath", async () => {
     // Open URL
-    await browser.url("https://practice.automationbro.com");
+    await HomePage.open();
 
     // Click Logo
-    await $("//img[@alt='Practice E-Commerce Site']").click();
+    await HomePage.imageLogo.click();
 
     // Assert title
     await expect(browser).not.toHaveUrlContaining("get-started");
@@ -49,17 +49,16 @@ describe("Home", () => {
   // Get element by css selector -> .elementor-widget-container h1
   it("Find heading element & assert text", async () => {
     // Open URL
-    await browser.url("https://practice.automationbro.com");
+    await HomePage.open();
 
     // Find heading element
-    const headingElement = await $(".elementor-widget-container h1");
-
-    // Get text
-    const headingText = await headingElement.getText();
+    const headingElement = await HomePage.txtHeading;
 
     // Assert heading text
 
     // First solution using .getText() method which is using if we wanna manipulate with text
+    // Get text
+    //const headingText = await headingElement.getText();
     //await expect(headingText).toEqual("Think different. Make different.");
 
     // Second solution using .toHaveText() assertion if we wanna directly assert text value without additional step (.getText() method)
