@@ -19,7 +19,7 @@
   "homepage": "https://github.com/StepanLozinskyi/wdio-basics#readme",
   "dependencies": {
     "@wdio/cli": "^7.25.1",
-    "faker": "^6.6.6"
+    "faker": "^5.5.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
@@ -29,6 +29,7 @@
     "@faker-js/faker": "github:faker-js/faker",
     "@wdio/local-runner": "^7.25.1",
     "@wdio/mocha-framework": "^7.25.1",
+    "@wdio/selenium-standalone-service": "^7.25.1",
     "@wdio/spec-reporter": "^7.25.1",
     "chromedriver": "^106.0.1",
     "eslint": "^8.25.0",
